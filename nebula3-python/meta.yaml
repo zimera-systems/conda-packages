@@ -1,0 +1,37 @@
+{% set name = "nebula3-python" %}
+{% set version = "3.0.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_rev: v3.0.0
+  git_url: https://github.com/vesoft-inc/nebula-python.git
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+
+  run:
+    - python
+    - httplib2
+    - future
+    - six
+    - pytz
+
+test:
+  imports:
+    - nebula3
+
+about:
+  home: https://github.com/vesoft-inc/nebula-python
+  license: Apache 2.0
+  license_family: Apache
+  summary: Official Python API for Nebula Graph
