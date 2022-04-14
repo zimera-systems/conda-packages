@@ -32,4 +32,4 @@ $ conda convert --platform all file.tar.bz2 -o outputdir/
 $ anaconda login
 
 $ anaconda upload <file>
-``
+```
