@@ -1,0 +1,36 @@
+{% set name = "pynvim" %}
+{% set version = "master" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_rev: master
+  git_url: https://github.com/neovim/pynvim.git
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+
+  run:
+    - python
+    - pyuv
+    - greenlet
+    - msgpack-python      
+
+test:
+  imports:
+    - pynvim
+
+about:
+  home: https://github.com/neovim/pynvim.git
+  license: Apache 2.0
+  license_family: Apache
+  summary: Python client to Neovim (for Python 3.10)
